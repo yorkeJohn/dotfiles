@@ -8,6 +8,8 @@ Personal config, managed with [GNU Stow](https://www.gnu.org/software/stow/). Ea
 - `vscode`: user `settings.json`
 - `claude`: Claude Code settings and custom skills (`/cooling` fans, `/lighting` RGB)
 
+Needs: `stow`, `zsh`, `gh` (git credential helper), a Nerd Font, and for nvim: Neovim 0.12+ (`sudo snap install nvim --classic`), `cargo install --locked tree-sitter-cli`, a C compiler and `xclip`.
+
 ```sh
 git clone --recursive https://github.com/yorkeJohn/dotfiles ~/dotfiles
 cd ~/dotfiles && stow */
