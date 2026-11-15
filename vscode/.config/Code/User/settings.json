@@ -1,0 +1,96 @@
+{
+  // Editor Settings
+  "editor.fontFamily": "FiraCode Nerd Font Mono, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 150,
+  "editor.renderLineHighlight": "all",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.linkedEditing": true,
+  "editor.unicodeHighlight.includeComments": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.accessibilitySupport": "off",
+  "editor.colorDecorators": true,
+
+  // Language-Specific Settings
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnType": true,
+    "editor.tabSize": 4
+  },
+
+  // Formatter Settings
+  "black-formatter.args": ["--line-length", "120"],
+
+  // Terminal Settings
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono, monospace",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.suggest.enabled": true,
+
+  // File & Explorer Settings
+  "files.associations": {
+    "*.ejs": "html",
+    "*.module.css": "css",
+    "*.lang": "properties"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // Emmet
+  "emmet.includeLanguages": {
+    "ftl": "html",
+    "javascript": "javascriptreact"
+  },
+
+  // Extensions
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "go.toolsManagement.autoUpdate": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "redhat.telemetry.enabled": false,
+  "html.validate.scripts": false,
+
+  // Spell Checker
+  "cSpell.enabledFileTypes": {
+    "*": false,
+    "markdown": true
+  },
+  
+  // Print/Folder Settings
+  "print.folder.exclude": [
+    "{bin,obj,out}",
+    "node_modules",
+    "data",
+    "**/*.{bin,exe,dll,hex,pdb,pdf,pfx,png,jpg,gif,bmp,suo,design}"
+  ],
+  "print.folder.fileNames": true,
+  "print.folder.include": [],
+  "print.folder.includeFileList": false,
+  "print.folder.maxFiles": 30,
+  "print.folder.maxLines": 1200,
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {},
+  "window.titleBarStyle": "custom",
+  "window.commandCenter": false,
+
+  // Chat
+  "chat.viewSessions.orientation": "stacked",
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://ui.shadcn.com": true,
+    "https://www.schemastore.org/": true
+  },
+  "workbench.editorAssociations": {
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.md": "vscode.markdown.preview.editor"
+  }
+}

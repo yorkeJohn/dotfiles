@@ -1,0 +1,5 @@
+alias ls="ls --color=auto"
+alias ll="ls -al --color=auto"
+alias la="ls -a --color=auto"
+alias set-icon-theme="gsettings set org.gnome.desktop.interface icon-theme"
+alias uppy="sudo apt update && sudo apt upgrade -y"

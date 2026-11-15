@@ -1,0 +1,20 @@
+{
+  "enabledPlugins": {
+    "frontend-design@anthropic-plugin-directory": true,
+    "taste-skill@taste-skill": true
+  },
+  "extraKnownMarketplaces": {
+    "taste-skill": {
+      "source": {
+        "source": "github",
+        "repo": "Leonxlnx/taste-skill"
+      }
+    }
+  },
+  "pluginConfigs": {},
+  "tui": "fullscreen",
+  "theme": "dark",
+  "attribution": {
+    "commit": ""
+  }
+}
