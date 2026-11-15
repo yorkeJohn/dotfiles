@@ -7,3 +7,6 @@
 [submodule "zsh/.zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/.zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "nvim/.config/nvim/pack/plugins/start/monokai.nvim"]
+	path = nvim/.config/nvim/pack/plugins/start/monokai.nvim
+	url = https://github.com/tanvirtin/monokai.nvim
