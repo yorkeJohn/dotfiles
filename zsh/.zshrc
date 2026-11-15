@@ -45,11 +45,9 @@ source "$ZSH_PLUGINS/powerlevel10k/powerlevel10k.zsh-theme"
 [[ ! -f ~/.zsh_aliases ]] || source ~/.zsh_aliases
 
 # --- Toolchains --------------------------------------------------------------
-# ~/.local/bin is added by ~/.profile; cargo by ~/.zshenv.
+# PATH (~/.local/bin, cargo, bun) is set in ~/.zshenv.
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# bun completions
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 # nvm
