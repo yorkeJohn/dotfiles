@@ -1,10 +1,10 @@
 ---
-name: cc
-description: View or change this PC's fan curves, fan profiles and cooling settings through the CoolerControl daemon API (GPU fan, NZXT case fans). Use when the user runs /cc or asks to check temperatures/fan speeds or tweak fan curves, profiles or CoolerControl settings.
+name: cooling
+description: View or change this PC's fan curves, fan profiles and cooling settings through the CoolerControl daemon API (GPU fan, NZXT case fans). Use when the user runs /cooling or asks to check temperatures/fan speeds or tweak fan curves, profiles or CoolerControl settings.
 argument-hint: "[what to check or change, e.g. 'make the case fans quieter']"
 ---
 
-# CoolerControl (`/cc`)
+# Cooling (`/cooling`)
 
 The user prefers fan changes made through the API instead of the CoolerControl UI.
 Request: $ARGUMENTS (if empty, run `status` and summarise temps and fan speeds).
@@ -14,7 +14,7 @@ Request: $ARGUMENTS (if empty, run `status` and summarise temps and fan speeds).
 - Token: `~/.config/coolercontrol-api/token` (mode 600). **Never print, echo or paste the token.** Use the helper, which reads it itself.
 - If calls return 401, the token was revoked: ask the user to create a new access token in CoolerControl settings and write it into the token file themselves (e.g. `nano ~/.config/coolercontrol-api/token`). Don't ask them to paste it in chat.
 
-## Helper: `~/.claude/skills/cc/ccapi.py`
+## Helper: `~/.claude/skills/cooling/ccapi.py`
 ```
 ccapi.py status                    # temps + fan duty/RPM per device (labelled)
 ccapi.py backup                    # save profiles+functions to ~/.config/coolercontrol-api/backups/
@@ -44,7 +44,7 @@ ccapi.py delete <path>
 | RAM RGB | SMBus `i2c-7` 0x5A/0x5B | Kernel option `acpi_enforce_resources=lax` added 2026-11-14 (GRUB backup at `/etc/default/grub.bak`), so the PIIX4 SMBus is exposed. OpenRGB controls the RAM (detected as "Corsair Dominator Platinum", Direct mode only). `jc42` hwmon now gives DIMM temps. |
 | it8792 | `261622c9…` | secondary motherboard chip, nothing connected. The CPU cooler and motherboard fan headers are on the IT8688E, which Linux doesn't detect (ACPI resource conflict), so they're BIOS-controlled. Since 2026-11-14 the ACPI conflict is worked around (`acpi_enforce_resources=lax`), but the kernel's built-in `it87` driver doesn't support the IT8688E, so it still isn't detected. Controlling it would need the out-of-tree it87 driver (frankcrawford/it87, via DKMS); the user hasn't decided. |
 
-Lighting: **all lighting is handled by the `/rgb` skill (OpenRGB), not CoolerControl.** Don't set lighting through this API (it would fight OpenRGB). CoolerControl has no lighting settings, and the Gigabyte RGB controller is disabled in CoolerControl.
+Lighting: **all lighting is handled by the `/lighting` skill (OpenRGB), not CoolerControl.** Don't set lighting through this API (it would fight OpenRGB). CoolerControl has no lighting settings, and the Gigabyte RGB controller is disabled in CoolerControl.
 
 Profiles:
 - **My Profile** (`0840dd7f-04cb-4c72-9303-4d78f0e92a55`): Graph on GPU Temp, drives the GPU `fan1`. Curve `[[0,30],[40,30],[60,45],[70,60],[78,80],[83,100],[110,100]]`, function "My Function" (`02ba5ea0-…`). Keep the minimum at or above 30%. Gaming result: ~63–64°C at ~50% fan.

@@ -5,11 +5,13 @@ Personal config, managed with [GNU Stow](https://www.gnu.org/software/stow/). Ea
 - `zsh`: `.zshrc`, Powerlevel10k config, aliases, completions, plugins (submodules)
 - `git`: `.gitconfig`, global ignore
 - `vscode`: user `settings.json`
-- `claude`: Claude Code settings and custom skills (`/cc` fans, `/rgb` lighting)
+- `claude`: Claude Code settings and custom skills (`/cooling` fans, `/lighting` RGB)
 
 ```sh
 git clone --recursive https://github.com/yorkeJohn/dotfiles ~/dotfiles
-cd ~/dotfiles && stow zsh git vscode claude
+cd ~/dotfiles && stow */
 ```
+
+`stow -R */` re-links after adding or removing files; `stow -D */` removes the links.
 
 Untracked, machine-local: `~/.gitconfig.local` (git identity), `~/.claude/settings.local.json`.

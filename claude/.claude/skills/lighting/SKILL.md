@@ -1,18 +1,18 @@
 ---
-name: rgb
-description: View or change this PC's RGB lighting (RAM, motherboard, AMD Wraith Prism cooler, NZXT case lighting, G502 mouse) through OpenRGB. Use when the user runs /rgb or asks to change LED colours, lighting modes, brightness or effects. Fans and cooling belong to /cc.
+name: lighting
+description: View or change this PC's RGB lighting (RAM, motherboard, AMD Wraith Prism cooler, NZXT case lighting, G502 mouse) through OpenRGB. Use when the user runs /lighting or asks to change LED colours, lighting modes, brightness or effects. Fans and cooling belong to /cooling.
 argument-hint: "[lighting change, e.g. 'make the cooler ring red' or 'all LEDs #00FFAA']"
 ---
 
-# RGB lighting (`/rgb`)
+# Lighting (`/lighting`)
 
 Request: $ARGUMENTS (if empty, run `rgbctl.py show` and summarise the current colours per device).
 
-Companion to `/cc`, which handles fans and cooling. **OpenRGB owns all lighting.** Never set lighting through the CoolerControl API: the two would overwrite each other, and CoolerControl's lighting settings were cleared on purpose (the Gigabyte RGB controller is disabled in CoolerControl).
+Companion to `/cooling`, which handles fans and cooling. **OpenRGB owns all lighting.** Never set lighting through the CoolerControl API: the two would overwrite each other, and CoolerControl's lighting settings were cleared on purpose (the Gigabyte RGB controller is disabled in CoolerControl).
 
 ## How it's set up
 - **Desired state:** `~/.config/OpenRGB/lighting.json` is the source of truth. It has one entry per OpenRGB device name: `mode`, `color` (hex, or comma-separated for multi-colour modes), optional `brightness` (0–100) and optional `zones: {"<zone name>": {"color": "..."}}`.
-- **Helper:** `~/.claude/skills/rgb/rgbctl.py` edits that file, then re-applies **every** device in one `openrgb` call and saves the profile `~/.config/OpenRGB/lighting.orp`. Re-applying everything matters: a profile saved after setting only some devices would lose the others.
+- **Helper:** `~/.claude/skills/lighting/rgbctl.py` edits that file, then re-applies **every** device in one `openrgb` call and saves the profile `~/.config/OpenRGB/lighting.orp`. Re-applying everything matters: a profile saved after setting only some devices would lose the others.
 - **At login:** the systemd user service `openrgb-lighting.service` waits 10s, then runs `openrgb --noautoconnect --profile lighting`. The Wraith Prism (Direct mode), the RAM and the NZXT don't keep their colours through a power-off without it.
 
 ## Helper
