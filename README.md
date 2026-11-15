@@ -4,7 +4,7 @@ Personal config, managed with [GNU Stow](https://www.gnu.org/software/stow/). Ea
 
 - `zsh`: `.zshrc`, Powerlevel10k config, aliases, completions, plugins (submodules)
 - `git`: `.gitconfig`, global ignore
-- `nvim`: minimal `init.lua`, Monokai (submodule) with a transparent background
+- `nvim`: `init.lua` with basic options, Monokai (transparent), Treesitter, nvim-tree; plugins are submodules
 - `vscode`: user `settings.json`
 - `claude`: Claude Code settings and custom skills (`/cooling` fans, `/lighting` RGB)
 

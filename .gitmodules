@@ -10,3 +10,10 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/monokai.nvim"]
 	path = nvim/.config/nvim/pack/plugins/start/monokai.nvim
 	url = https://github.com/tanvirtin/monokai.nvim
+[submodule "nvim/.config/nvim/pack/plugins/start/nvim-treesitter"]
+	path = nvim/.config/nvim/pack/plugins/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+	branch = master
+[submodule "nvim/.config/nvim/pack/plugins/start/nvim-tree.lua"]
+	path = nvim/.config/nvim/pack/plugins/start/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua
