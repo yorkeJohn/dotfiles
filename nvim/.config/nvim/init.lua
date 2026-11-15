@@ -41,21 +41,36 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.cmd.colorscheme("monokai")
 
 -- Treesitter ------------------------------------------------------------------
--- Uses the frozen `master` branch, the last one supporting Neovim 0.11.
--- Parsers compile with gcc into the data dir, keeping the submodule clean.
-local parser_dir = vim.fn.stdpath("data") .. "/treesitter"
-opt.runtimepath:prepend(parser_dir)
+-- `main` branch: needs Neovim 0.12+ and the tree-sitter CLI (cargo install tree-sitter-cli).
+-- Parsers install into stdpath("data")/site, outside the repo.
+local ts = require("nvim-treesitter")
 
-require("nvim-treesitter.configs").setup({
-  parser_install_dir = parser_dir,
-  ensure_installed = {
-    "bash", "css", "html", "javascript", "json", "lua", "markdown",
-    "markdown_inline", "python", "query", "rust", "toml", "tsx",
-    "typescript", "vim", "vimdoc", "yaml",
-  },
-  auto_install = true, -- install a missing parser when opening a new file type
-  highlight = { enable = true },
-  indent = { enable = true },
+ts.install({
+  "bash", "css", "html", "javascript", "json", "lua", "markdown",
+  "markdown_inline", "python", "query", "rust", "toml", "tsx",
+  "typescript", "vim", "vimdoc", "yaml",
+}) -- async, and a no-op once installed
+
+-- Enable highlighting and indentation per buffer; install a missing parser
+-- the first time a file type that has one is opened.
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if not lang then return end
+
+    local function start()
+      if not vim.api.nvim_buf_is_valid(args.buf) then return end
+      if pcall(vim.treesitter.start, args.buf, lang) then
+        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
+    end
+
+    if vim.tbl_contains(ts.get_installed(), lang) then
+      start()
+    elseif vim.tbl_contains(ts.get_available(), lang) then
+      ts.install(lang):await(vim.schedule_wrap(start))
+    end
+  end,
 })
 
 -- File explorer ---------------------------------------------------------------

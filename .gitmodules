@@ -13,7 +13,7 @@
 [submodule "nvim/.config/nvim/pack/plugins/start/nvim-treesitter"]
 	path = nvim/.config/nvim/pack/plugins/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter
-	branch = master
+	branch = main
 [submodule "nvim/.config/nvim/pack/plugins/start/nvim-tree.lua"]
 	path = nvim/.config/nvim/pack/plugins/start/nvim-tree.lua
 	url = https://github.com/nvim-tree/nvim-tree.lua
